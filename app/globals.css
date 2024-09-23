@@ -2,10 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-.main{
-    background-image: url(./../public/manOnHorse.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh;
-    
-}
+
