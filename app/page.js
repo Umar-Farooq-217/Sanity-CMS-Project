@@ -1,21 +1,38 @@
 import Image from "next/image";
 import './globals.css'
+import { client } from "@/sanity/lib/client";
 
-export default function Home() {
+const fetchMainData = async ()=>{
+  let mainData = await client.fetch('*[_type == "mainPageDataType"]')
+  console.log('fetchMainData',mainData);
+  return mainData
+  
+}
+
+export default async function Home() {
+const firstMainData = await fetchMainData()
   return (
    <div className="">
     <div className="">
-    <div className="">
-      <h1>Adventure Voyage Wandering</h1>
-      <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus in libero risus semper habitant arcu eget. Et integer facilisi.</p>
-      <button>Get Started</button>
+      {
+        firstMainData.map((main,i)=>{
+          return(
+            <div key={i} className="">
+              <h1 className="">{main.heading}</h1>
+               <p className="">{main.pera}</p>
+      <button>{main.btn}</button>
       <div className="">
         
       </div>
+            </div>
+          )
+        })
+      }
+     
     </div>
     <div className=""></div>
     <div className=""></div>
     </div>
-   </div>
+   
   );
 }
