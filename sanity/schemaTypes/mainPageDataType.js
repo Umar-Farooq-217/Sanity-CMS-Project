@@ -19,8 +19,34 @@ export const mainPageDataType = defineType({
     }),
     defineField({
       name: 'btn',
-      title:'Bttn',
+      title:'Btn',
       type: 'string',
+    }), defineField({
+      name: 'firstImage',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+        }
+      ]
+    }), defineField({
+      name: 'secondImage',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+        }
+      ]
     }),
    
   ],
@@ -28,7 +54,9 @@ export const mainPageDataType = defineType({
     select: {
      heading:'heading',
      pera:'pera',
-     btn:'btn'
+     btn:'btn',
+     firstImage:'firstImage',
+     secondImage:'secondImage',
     },
   },
 })
