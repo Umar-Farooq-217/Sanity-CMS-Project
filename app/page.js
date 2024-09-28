@@ -14,7 +14,7 @@ const fetchMainData = async () => {
     cache: 'no-cache'
   }
   )
-  console.log('fetchMainData', mainData);
+
   return mainData
 }
 
@@ -26,10 +26,15 @@ const fetchMiddleData = async()=>{
       cache:'no-cache'
     }
   )
+  console.log('fetchMiddleData', middleData);
+  return middleData
 }
 
 export default async function Home() {
   const firstMainData = await fetchMainData()
+  const middleData = await fetchMiddleData()
+  console.log('middleDAta',middleData);
+  
   return (
     <div className="">
       <div className="">
@@ -61,7 +66,23 @@ export default async function Home() {
         }
 
       </div>
-      <div className=""></div>
+      <div className="">
+        {
+          middleData.map((item,i)=>{
+            return(
+              <div key={i} className="">
+                <h1 className="">{item.heading}</h1>
+                   <Image
+                    src={urlFor(item.Image.asset).url()}  // Generate the image URL
+                    width={200}
+                    height={300}
+                    alt='First Flower image'
+                  />
+              </div>
+            )
+          })
+        }
+      </div>
       <div className=""></div>
     </div>
 
