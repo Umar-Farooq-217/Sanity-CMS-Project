@@ -18,6 +18,16 @@ const fetchMainData = async () => {
   return mainData
 }
 
+const fetchMiddleData = async()=>{
+  let middleData = await client.fetch(
+    '*[_type == "middleDataType"]',
+    {},
+    {
+      cache:'no-cache'
+    }
+  )
+}
+
 export default async function Home() {
   const firstMainData = await fetchMainData()
   return (
