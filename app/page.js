@@ -30,10 +30,23 @@ const fetchMiddleData = async()=>{
   return middleData
 }
 
+const fetchRightData = async()=>{
+  let rightData = await client.fetch(
+'*[_type == "lastDataType"]',
+{},
+{
+  cache:'no-cache'
+}
+  )
+  return rightData
+}
+
 export default async function Home() {
   const firstMainData = await fetchMainData()
   const middleData = await fetchMiddleData()
-  console.log('middleDAta',middleData);
+  const rightData = await fetchRightData()
+
+  console.log('middleDAta',rightData);
   
   return (
     <div className="">
@@ -83,7 +96,32 @@ export default async function Home() {
           })
         }
       </div>
-      <div className=""></div>
+      <div className="">
+        {
+          rightData.map((item,i)=>{
+            return(
+              <div className="" key={i}>
+                <div className="">
+                <Image
+                    src={urlFor(item.rightFirstImage.asset).url()}  // Generate the image URL
+                    width={200}
+                    height={300}
+                    alt='First Flower image'
+                  />
+                   <Image
+                    src={urlFor(item.rightSecondImage.asset).url()}  // Generate the image URL
+                    width={200}
+                    height={300}
+                    alt='First Flower image'
+                  />
+                </div>
+                <h1 className="">{item.heading}</h1>
+                <p className="">{item.pera}</p>
+              </div>
+            )
+          })
+        }
+      </div>
     </div>
 
   );
