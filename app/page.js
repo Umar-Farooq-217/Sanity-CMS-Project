@@ -49,16 +49,16 @@ export default async function Home() {
   console.log('middleDAta',rightData);
   
   return (
-    <div className="grid md:grid-cols-3 sm:grid-cols-1 md:gap-8 sm:gap-3 px-12 py-20">
+    <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-3 lg:px-12 lg:py-20 md:px-6 md:py-10">
       <div className="">
         {
           firstMainData.map((main, i) => {
             return (
-              <div key={i} className="font-serif">
-                <h1 className="text-[64px] ">{main.heading}</h1>
-                <p className="text-[24px] pt-3">{main.pera}</p>
-                <button className="bg-[#457D61] py-3 px-5 text-lg font-bold font-sans rounded-3xl mt-5 text-white">{main.btn}</button>
-                <div className="grid grid-cols-2 px-8 ">
+              <div key={i} className="font-serif ">
+                <h1 className="lg:text-[60px] text-[55px] md:p-0 sm:p-2 ">{main.heading}</h1>
+                <p className="text-[24px] pt-3 md:px-0 sm:px-2  ">{main.pera}</p>
+                <button className="bg-[#457D61] py-2 hover:scale-110 px-5 text-lg  md:ml-0 sm:ml-2 font-bold font-sans rounded-3xl mt-5 text-white">{main.btn}</button>
+                <div className="grid grid-cols-2 px-2 gap-4 ">
 
                   <Image
                     src={urlFor(main.firstImage.asset).url()}  // Generate the image URL
@@ -86,14 +86,15 @@ export default async function Home() {
         {
           middleData.map((item,i)=>{
             return(
-              <div key={i} className="pt-36 font-serif ">
-                <h1 className="text-2xl font-semibold text-center">{item.heading}</h1>
+              <div key={i} className="md:pt-44 sm:pt-14 font-serif ">
+                <h2 className="font-bold text-2xl text-center pb-3">Sanity Project</h2>
+                <h1 className="text-2xl font-semibold text-center bg-[#457D61] rounded-full py-2 text-white">{item.heading}</h1>
                    <Image
                     src={urlFor(item.Image.asset).url()}  // Generate the image URL
                     width={200}
                     height={300}
                     alt='First Flower image'
-                    className="w-full h-[640px] px-8 mt-2"
+                    className="w-full h-[640px] lg:px-8 px-2 pt-3 pb-7"
                   />
               </div>
             )
@@ -105,7 +106,7 @@ export default async function Home() {
           rightData.map((item,i)=>{
             return(
               <div className="" key={i}>
-                <div className="grid grid-cols-2 px-8">
+                <div className="grid grid-cols-2 px-4 gap-4">
                 <Image
                     src={urlFor(item.rightFirstImage.asset).url()}  // Generate the image URL
                     width={200}
@@ -122,8 +123,8 @@ export default async function Home() {
 
                   />
                 </div>
-                <p className="font-serif text-[24px] pt-5 ">{item.pera}</p>
-                <h1 className="">{item.heading}</h1>
+                <p className="font-serif text-[24px] pt-5 md:p-0 sm:p-2 ">{item.pera}</p>
+                <h1 className="font-serif text-[64px] md:p-0 sm:p-2 lg:pr-20 md:pr-10 sm:pr-10 pt-5">{item.heading}</h1>
               </div>
             )
           })
